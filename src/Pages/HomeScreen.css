@@ -1,0 +1,50 @@
+.homescreen {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column-reverse;
+    max-height: fit-content;
+}
+
+
+.options {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300; 
+}
+
+.clouds{
+    width: 400px;
+    align-self: center;
+    padding: 0px;
+    margin-bottom: 30px;
+    margin-top: 15px;
+}
+
+@media (max-width: 800x) {
+    .homescreen{
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .clouds {
+        width: 85%;
+        padding: 0;
+        padding-top: 20px;
+    }
+    .options{
+        width: 100%;
+        font-family: 'Roboto', sans-serif; 
+    }
+}
+
+.options-selection{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 270px;
+    flex: 0.8;
+    justify-content: space-evenly;
+}
