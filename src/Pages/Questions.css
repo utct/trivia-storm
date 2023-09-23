@@ -1,0 +1,37 @@
+.cloud{
+    width: 400px;
+    align-self: center;
+    padding: 0px;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+
+.questions{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.quizOptions {
+    width: auto;
+    border: none;
+    border-width: auto 3px;
+    border-radius: 7px; 
+    padding: 10px; 
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal; 
+    color: rgb(63, 63, 63);
+    background-color: aliceblue;
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+}
+.score {
+    color: rgb(248, 167, 61);
+    font-weight: bold;
+}
+

@@ -1,8 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './HomeScreen.css'
 import { Button, MenuItem, TextField } from '@mui/material'
 import Categories from '../API/Categories'
-const HomeScreen = () => {
+import { useNavigate } from 'react-router-dom'
+import ErrorHandle from '../components/ErrorHandle'
+
+const HomeScreen = ({fetchQuestions}) => {
+
+  const [category, setCategory] = useState("")
+  const [difficulty, setDiff] = useState("")
+  const [error, setError] = useState(false)
+
+  const navigate = useNavigate();
+
+  const handleSubmit = () => {
+    if (!category || !difficulty) {
+      setError(true)
+      return
+    }
+    else{
+      fetchQuestions(category,difficulty)
+      navigate('/questions')
+    }
+
+  };
+
 
   
   return (
@@ -11,11 +33,14 @@ const HomeScreen = () => {
         <span style={{fontSize: 20}}></span>
 
         <div className='options-selection'>
+          
 
           <TextField 
             select
             label="Select Category"
-            variant='outlined' style={{marginBottom: 30}}>
+            variant='outlined' style={{marginBottom: 30}}
+            onChange = {(e) => setCategory(e.target.value)}
+            value = {category}>
 
           {Categories.map((category) => (
               <MenuItem key={category.category} value={category.value}>
@@ -27,7 +52,9 @@ const HomeScreen = () => {
           <TextField
             select
             label="Select Difficulty"
-            variant='outlined' style={{marginBottom: 30}}>
+            variant='outlined' style={{marginBottom: 30}}
+            onChange = {(e) => setDiff(e.target.value)}
+            value = {difficulty}>
 
             
           
@@ -41,15 +68,14 @@ const HomeScreen = () => {
               Hard
             </MenuItem>
           </TextField>
+          
 
-          <Button variant='contained' color='primary' size='large'>
+          <Button variant='outlined' color='primary' size='large'
+          onClick={handleSubmit}>
             Start New Trivia!
           </Button>
-          
+          {error && <ErrorHandle>You should pick both category and the level of difficulty.</ErrorHandle>}
         </div>
-      
-      
-      
       
       
       </div>

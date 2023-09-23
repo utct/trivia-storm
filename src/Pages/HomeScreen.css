@@ -14,13 +14,14 @@
     align-items: center;
     font-family: 'Roboto', sans-serif;
     font-weight: 300; 
+    margin-top: 20px;
 }
 
 .clouds{
     width: 400px;
     align-self: center;
     padding: 0px;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     margin-top: 15px;
 }
 

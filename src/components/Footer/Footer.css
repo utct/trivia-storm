@@ -1,12 +1,10 @@
 .footer{
     background-color: rgb(255, 255, 255);
-    color: rgb(83, 125, 251);
+    color: rgb(105, 105, 105);
     font-size: small;
     font-family: 'Roboto', sans-serif;
-    font-weight: bold;
+    background-color: rgb(220, 220, 220);
     margin-top: 0px;
-    position: absolute;
-    bottom: 0;
     width: 100%;
     
     
