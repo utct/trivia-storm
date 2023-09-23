@@ -31,7 +31,10 @@ const handleCheck = (i) => {
     if (i === correctAnswer){
         setScore(score+1)
         setError(false)
-        }
+    } else {
+        setError('Incorrect answer!')
+
+    }
     }
 
 const goToNextQuestion = (i) => {
@@ -45,12 +48,15 @@ const goToNextQuestion = (i) => {
     }
 }
 
+const returnToHome = () => {
+    navigate('/'); // Navigate to home screen
+  };
 
 
 
   return (
     <div className='qnumber'>
-        <h1>Question {currentQuestion +1 }/5</h1>
+        <h1>Question {currentQuestion +1 }/7</h1>
         <div className='q'>
             <span>
                 {he.decode(questions[currentQuestion].question)}
@@ -76,19 +82,30 @@ const goToNextQuestion = (i) => {
             
             <div className='nextQ'>
                 
-                            
+            {error && <div className="error"></div>}
+            <div className="returnToHome">
+          <Button variant="outlined" 
+                    onClick={returnToHome}
+                    color='primary'
+                    size='large'
+                    style={{width: 170}}>
+                    Start Over
+          </Button>
+            </div>
+            
                 <Button 
                     color='primary'
                     variant='outlined'
                     size='large'
                     style={{width: 170}}
-                
                     onClick={goToNextQuestion}
+                    disabled={error} // Disable the button if an error occurs (incorrect answer)
                     >Next Question
                 </Button>
 
-            </div>
             
+            
+            </div>
                     
                 
 

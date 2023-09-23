@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
+
 import HomeScreen from './Pages/HomeScreen';
 import Score from './Pages/Score';
 import Questions  from './Pages/Questions';
@@ -45,7 +45,7 @@ const fetchQuestions  = async(category = '',difficulty = '') => {
           <Route path="/score" element={<Score score={score} />} />
       </Routes>
     </div>
-    <Footer/>
+    
     </BrowserRouter>
   );
 }

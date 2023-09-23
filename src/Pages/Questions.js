@@ -31,7 +31,7 @@ const Questions = ({score, questions, setQuestions, setScore}) => {
     <div className='questions'>
       
 
-      <img src='./Artboard1.png' className='cloud' alt='cloudpicture' />
+      
 
       {questions ? ( 
       <>

@@ -1,10 +1,4 @@
-.cloud{
-    width: 400px;
-    align-self: center;
-    padding: 0px;
-    margin-bottom: 10px;
-    margin-top: 15px;
-}
+
 
 .questions{
     display: flex;
@@ -26,8 +20,8 @@
     font-weight: normal; 
     color: rgb(63, 63, 63);
     background-color: aliceblue;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    
+    margin-top: 20px;
 
 }
 .score {
