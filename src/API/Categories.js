@@ -1,6 +1,5 @@
 const Categories = [
-    {
-      category: "General Knowledge",value: 9,},
+    { category: "General Knowledge",value: 9 },
     { category: "Entertainment: Books", value: 10 },
     { category: "Entertainment: Film", value: 11 },
     { category: "Entertainment: Music", value: 12 },
@@ -21,8 +20,6 @@ const Categories = [
     { category: "Animals", value: 27 },
     { category: "Vehicles", value: 28 },
     { category: "Gadgets", value: 30 },
-    
-    ,
   ];
   
   export default Categories;
