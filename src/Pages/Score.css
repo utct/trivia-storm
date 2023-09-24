@@ -19,7 +19,7 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    color: rgb(248, 167, 61);
+    color: rgb(83, 125, 251);
     
 }
 .titleScore2{
@@ -27,7 +27,7 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    color: rgb(248, 167, 61);
+    color: rgb(83, 125, 251);
     margin-bottom: 30px;
     
 }
@@ -36,3 +36,15 @@
     width: 300px;
     align-self: center;
 }
+
+.bonusPointsContainer {
+    max-width: 300px; /* Set a maximum width for the bonus points container */
+    margin: 0 auto; /* Center the container */
+  }
+  
+  .bonusPointsText {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: rgb(248, 167, 61); /* Set the color of the bonus points text */
+    margin-bottom: 60px;
+  }

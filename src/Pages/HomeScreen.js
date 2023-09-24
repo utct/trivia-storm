@@ -3,33 +3,29 @@ import './HomeScreen.css'
 import { Button, MenuItem, TextField } from '@mui/material'
 import Categories from '../API/Categories'
 import { useNavigate } from 'react-router-dom'
-import ErrorHandle from '../components/ErrorHandle'
+
 
 const HomeScreen = ({fetchQuestions}) => {
 
   const [category, setCategory] = useState("")
   const [difficulty, setDiff] = useState("")
-  const [error, setError] = useState(false)
+  
 
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    if (!category || !difficulty) {
-      setError(true)
-      return
-    }
-    else{
+    
       fetchQuestions(category,difficulty)
       navigate('/questions')
-    }
-
   };
 
 
   
   return (
     <div className='homescreen'>
+      
       <div className='options'>
+        
         <span style={{fontSize: 20}}></span>
 
         <div className='options-selection'>
@@ -70,22 +66,14 @@ const HomeScreen = ({fetchQuestions}) => {
           </TextField>
           
 
-          <Button variant='outlined' color='primary' size='large'
+          <Button variant='outlined' color='primary' size='large' disabled={!category || !difficulty}
           onClick={handleSubmit}>
             Start New Trivia!
           </Button>
-          {error && <ErrorHandle>You should pick both category and the level of difficulty.</ErrorHandle>}
+          
         </div>
-      
-      
       </div>
       <img src='./Artboard1.png' className='clouds' alt='cloudpicture'/>
-
-      
-
-      
-
-      
     </div>
   )
 }

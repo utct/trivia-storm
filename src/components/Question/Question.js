@@ -11,6 +11,8 @@ const Question = ({currentQuestion, choice, score,
     
 const [selectedChoice, setSelectedChoice] = useState()
 const [error, setError] = useState(false)
+const navigate = useNavigate();
+const [lives, setLives] = useState(2); 
 
 const handleSelection = (i) => {
     if(selectedChoice === correctAnswer && selectedChoice ===i){
@@ -24,18 +26,23 @@ const handleSelection = (i) => {
         }
         }
 
-const navigate = useNavigate();
+
 
 const handleCheck = (i) => {
     setSelectedChoice(i)
+    
     if (i === correctAnswer){
         setScore(score+1)
         setError(false)
     } else {
-        setError('Incorrect answer!')
-
+        setError(true)
+      setLives((prevLives) => prevLives - 1);
+      if (lives === 1) {
+        setError(true)
+         
+      }
     }
-    }
+}
 
 const goToNextQuestion = (i) => {
     if (currentQuestion > 5){
@@ -43,20 +50,37 @@ const goToNextQuestion = (i) => {
     } else if (selectedChoice){
         setCurrentQuestion(currentQuestion+1)
         setSelectedChoice()
+        setError(false)
     } else {
-        setError("You should pick an option")
+        setError(true)
     }
 }
 
 const returnToHome = () => {
-    navigate('/'); // Navigate to home screen
+    navigate('/'); 
+  };
+
+  const generateHeartEmojis = () => {
+    const hearts = [];
+    
+    for (let i = 0; i < lives; i++) {
+      if (i < lives) {
+        hearts.push('\u{1F499}'); 
+      }  
+      
+    }
+    return hearts;
   };
 
 
-
   return (
+    
+    
     <div className='qnumber'>
+        <div className="lives">Lives: {generateHeartEmojis()}</div>
+        
         <h1>Question {currentQuestion +1 }/7</h1>
+        
         <div className='q'>
             <span>
                 {he.decode(questions[currentQuestion].question)}
@@ -99,16 +123,10 @@ const returnToHome = () => {
                     size='large'
                     style={{width: 170}}
                     onClick={goToNextQuestion}
-                    disabled={error} // Disable the button if an error occurs (incorrect answer)
-                    >Next Question
+                    disabled={(error && lives === 0) || !selectedChoice} 
+                    >{currentQuestion === 6 ? 'Finish Quiz' : 'Next Question'}
                 </Button>
-
-            
-            
             </div>
-                    
-                
-
             </div>
         </div>
     

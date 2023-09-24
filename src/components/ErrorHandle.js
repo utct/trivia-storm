@@ -3,7 +3,7 @@ const ErrorHandle = ({ children }) => {
       <div
         style={{
           width: "100%",
-          marginTop : 20,
+          marginTop : 0,
           textAlign: "center",
           color: "red",
         }}

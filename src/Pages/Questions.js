@@ -8,13 +8,12 @@ const Questions = ({score, questions, setQuestions, setScore}) => {
   const [choice, setChoice] = useState()
   const [currentQuestion, setCurrentQuestion] = useState(0)
 
-
   useEffect(() => {
     console.log(questions);
 
     
 
-    setChoice(questions && incorrectCorrectMix(
+  setChoice(questions && incorrectCorrectMix(
       [questions[currentQuestion]?.correct_answer,
       ...questions[currentQuestion]?.incorrect_answers
     ])
@@ -29,9 +28,6 @@ const Questions = ({score, questions, setQuestions, setScore}) => {
 
   return (
     <div className='questions'>
-      
-
-      
 
       {questions ? ( 
       <>
