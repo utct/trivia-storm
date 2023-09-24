@@ -10,7 +10,7 @@ const Question = ({currentQuestion, choice, score,
     const [selectedChoice, setSelectedChoice] = useState()
     const [error, setError] = useState(false)
     const navigate = useNavigate();
-    const [lives, setLives] = useState(2); 
+    const [lives, setLives] = useState(3); 
 
     // See if the choice is correct, incorrect or unselected
     const handleSelection = (i) => {
@@ -38,7 +38,7 @@ const Question = ({currentQuestion, choice, score,
     }
     // End the quiz or go to the next question
     const goToNextQuestion = (i) => {
-        if (currentQuestion > 5){
+        if (currentQuestion > 8){
             navigate("/score")
         } else if (selectedChoice){
             setCurrentQuestion(currentQuestion+1)
@@ -68,7 +68,7 @@ const Question = ({currentQuestion, choice, score,
     return (
         <div className='qnumber'>
             <div className="lives">Lives: {generateHeartEmojis()}</div>
-            <h1>Question {currentQuestion +1 }/7</h1>
+            <h1>Question {currentQuestion +1 }/10</h1>
         
             <div className='q'>
                 <span>
@@ -106,7 +106,7 @@ const Question = ({currentQuestion, choice, score,
                     style={{width: 170}}
                     onClick={goToNextQuestion}
                     disabled={(error && lives === 0) || !selectedChoice} 
-                    >{currentQuestion === 6 ? 'Finish Quiz' : 'Next Question'}
+                    >{currentQuestion === 9 ? 'Finish Quiz' : 'Next Question'}
                 </Button>
             </div>
         </div>
