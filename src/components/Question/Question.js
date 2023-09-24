@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ErrorHandle from '../ErrorHandle'
 import './Question.css'
 import { Button } from '@mui/material'
@@ -8,11 +8,20 @@ import he from 'he';
 
 const Question = ({currentQuestion, choice, score,
     correctAnswer, setCurrentQuestion, questions, setScore}) => {
-    
+const [shouldFadeIn, setShouldFadeIn] = useState(true);
+
 const [selectedChoice, setSelectedChoice] = useState()
 const [error, setError] = useState(false)
 const navigate = useNavigate();
 const [lives, setLives] = useState(2); 
+
+useEffect(() => {
+    setShouldFadeIn(true);
+    const timeout = setTimeout(() => {
+      setShouldFadeIn(false);
+    }, 100);
+    return () => clearTimeout(timeout);
+  }, [currentQuestion]);
 
 const handleSelection = (i) => {
     if(selectedChoice === correctAnswer && selectedChoice ===i){
@@ -81,7 +90,7 @@ const returnToHome = () => {
         
         <h1>Question {currentQuestion +1 }/7</h1>
         
-        <div className='q'>
+        <div className={`q ${shouldFadeIn ? 'fade-in' : ''}`}>
             <span>
                 {he.decode(questions[currentQuestion].question)}
             </span>
