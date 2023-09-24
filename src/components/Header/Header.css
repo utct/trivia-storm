@@ -1,13 +1,10 @@
 .title {
-    
     cursor: pointer;
     font-weight: bolder;
     margin-top: 20px;
     font-size: 50px;
     font-family: 'Roboto', sans-serif;
     color: rgb(83, 125, 251);;
-    
-    
 }
 
 .header{

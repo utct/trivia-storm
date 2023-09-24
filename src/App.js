@@ -9,43 +9,42 @@ import axios from 'axios';
 
 
 function App() {
+  const [questions, setQuestions] = useState()
+  const [score, setScore] = useState(0)
+  const [difficulty, setDifficulty] = useState('');
+  const [bonusPoints, setBonusPoints] = useState(0);
 
-const [questions, setQuestions] = useState()
-const [score, setScore] = useState(0)
-const [difficulty, setDifficulty] = useState('');
-const [bonusPoints, setBonusPoints] = useState(0);
-
-
-const fetchQuestions = async (category = '', difficulty = '') => {
-  const { data } = await axios.get(
-    `https://opentdb.com/api.php?amount=10${category && `&category=${category}`}${
-      difficulty && `&difficulty=${difficulty}`
-    }&type=multiple`
-  );
-
-  
-  const bonusPoints = calculateBonusPoints(difficulty);
-  setScore(0);
-  setQuestions(data.results);
-  setDifficulty(difficulty);
-  setBonusPoints(bonusPoints);
-};
-
-const calculateBonusPoints = (difficulty) => {
-  if (difficulty === 'medium') {
-    return 20; 
-  } else if (difficulty === 'hard') {
-    return 30; 
+  // Fetch questions from the API 
+  const fetchQuestions = async (category = '', difficulty = '') => {
+    const { data } = await axios.get(
+      `https://opentdb.com/api.php?amount=10${category && `&category=${category}`}${
+        difficulty && `&difficulty=${difficulty}`}&type=multiple`
+      )
+    const bonusPoints = calculateBonusPoints(difficulty)
+      setScore(0);
+      setQuestions(data.results);
+      setDifficulty(difficulty);
+      setBonusPoints(bonusPoints);
   }
-  return 0; 
-};
+
+  // Give the user bonus dificulty points 
+  const calculateBonusPoints = (difficulty) => {
+    if (difficulty === 'medium') {
+      return 20; 
+    } else if (difficulty === 'hard') {
+      return 100; 
+    }
+    return 0; 
+  };
 
   return (
     <BrowserRouter>
-    <div className="App">
-      <Header />
-      <Routes>
-          <Route path="/" element={<HomeScreen 
+      <div className="App">
+        <Header />
+        <Routes>
+
+          <Route path="/" element=
+          {<HomeScreen 
           fetchQuestions={fetchQuestions}/>} />
           
           <Route path="/questions" element={
@@ -54,14 +53,18 @@ const calculateBonusPoints = (difficulty) => {
               score={score}
               setScore={setScore}
               setQuestions={setQuestions}/>}
-            />
-          
-          <Route path="/score" element={<Score score={score} difficulty={difficulty} bonusPoints={bonusPoints}/>} />
+          />
+
+          <Route path="/score" element=
+          {<Score 
+            score={score} 
+            difficulty={difficulty} 
+            bonusPoints={bonusPoints}/>} />
+
       </Routes>
     </div>
-    
-    </BrowserRouter>
-  );
+  </BrowserRouter>
+  )
 }
 
 export default App;

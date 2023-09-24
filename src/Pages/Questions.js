@@ -4,31 +4,25 @@ import { CircularProgress } from '@mui/material'
 import Question from '../components/Question/Question'
 
 const Questions = ({score, questions, setQuestions, setScore}) => {
-
   const [choice, setChoice] = useState()
   const [currentQuestion, setCurrentQuestion] = useState(0)
 
   useEffect(() => {
-    console.log(questions);
-
-    
-
-  setChoice(questions && incorrectCorrectMix(
+    // When the questions change, update the choices
+    setChoice(questions && incorrectCorrectMix(
       [questions[currentQuestion]?.correct_answer,
       ...questions[currentQuestion]?.incorrect_answers
-    ])
-  )
+      ])
+    )
   }, [questions, currentQuestion])
 
-  console.log(choice);
-
+  // Shuffle the wrong answers with the correct answer
   const incorrectCorrectMix = (choices) => {
     return choices.sort(()=> Math.random() - 0.5)
   }
 
   return (
     <div className='questions'>
-
       {questions ? ( 
       <>
          <div className='quizOptions'>
@@ -37,20 +31,17 @@ const Questions = ({score, questions, setQuestions, setScore}) => {
          </div>
          
          <Question 
-         currentQuestion = {currentQuestion}
-         choice = {choice}
-         score = {score}
-         correctAnswer = {questions[currentQuestion]?.correct_answer}
-         setCurrentQuestion = {setCurrentQuestion}
-         questions = {questions}
-         setScore = {setScore}
-         setQuestions = {setQuestions}
-         />
-         
-         
-         </>): (<CircularProgress 
-         style = {{margin: 100}} size={30} thickness={4}/>)}
-      </div>
+          currentQuestion = {currentQuestion}
+          choice = {choice}
+          score = {score}
+          correctAnswer = {questions[currentQuestion]?.correct_answer}
+          setCurrentQuestion = {setCurrentQuestion}
+          questions = {questions}
+          setScore = {setScore}
+          setQuestions = {setQuestions}/>
+        </>
+      ): (<CircularProgress style = {{margin: 100}} size={30} thickness={4}/>)}
+    </div>
   )
 }
 

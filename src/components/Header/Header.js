@@ -8,7 +8,6 @@ const Header = () => {
         <Link to="/" className='title'>
             Trivia Storm
         </Link>
-    
     </div>
   )
 }
