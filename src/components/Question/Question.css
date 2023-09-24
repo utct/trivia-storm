@@ -79,12 +79,10 @@
 
 .true,
 .false {
-    width: calc(90% - 20px);
     font-size: large;
     font-family: 'Roboto', sans-serif;
     height: 60px;
-    padding: 15px 20px;
-    margin: 10px;
+    
     border: none;
     border-radius: 7px;
 }
