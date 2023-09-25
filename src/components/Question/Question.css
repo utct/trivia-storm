@@ -20,7 +20,7 @@
 
 .q {
     width: 100%;
-    max-width: 500px;
+    max-width: 700px;
     min-height: 350px;
     display: flex;
     flex-direction: column;
@@ -34,7 +34,7 @@
 }
   
 .choiceSelect {
-    width: 98%;
+    width: auto;
     display: flex;
     flex-wrap: wrap;
     flex: 1;
@@ -62,8 +62,7 @@
     justify-content: center;
     margin-top: 25px;
     margin-bottom: 25px;
-    margin-right: 10px; 
-    margin-left: 10px; 
+    
 }
 
 .nextQ Button {
