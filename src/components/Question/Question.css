@@ -19,8 +19,8 @@
 }
 
 .q {
-    width: 100%;
-    max-width: 700px;
+    width: auto;
+    max-width: 650px;
     min-height: 350px;
     display: flex;
     flex-direction: column;
@@ -66,7 +66,8 @@
 }
 
 .nextQ Button {
-    margin: 0 5px; 
+    margin: 0 4px; 
+    
 }
   
 @media (max-width: 614px) {
